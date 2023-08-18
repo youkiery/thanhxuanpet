@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChungService } from 'src/app/dichvu/chung.service';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-hinhanh',
@@ -14,7 +17,14 @@ export class HinhanhComponent  implements OnInit {
 
   ngOnInit() {}
 
-  ionViewOnEnter() {
-    console.log(1);
+  ionViewOnEnter() {}
+
+  public async addNewToGallery() {
+    // Take a photo
+    const capturedPhoto = await Camera.getPhoto({
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera,
+      quality: 100
+    });
   }
 }

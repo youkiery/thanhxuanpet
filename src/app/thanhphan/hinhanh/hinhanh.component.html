@@ -1,12 +1,21 @@
 <div *ngIf="luonganh == 'it' || luonganh == 'nhieu'"> <!--nếu không nhập lượng ảnh thì bỏ qua -->
   <div class="hinhanh"> <!-- nút upload ảnh -->
     <!-- mode 1 ảnh: ẩn icon thay bằng hình ảnh khi đã chọn ảnh -->
-    <div *ngIf="luonganh == 'it'">
-      <ion-icon *ngIf="!chung.hinhanh.it.length" name="images-outline"></ion-icon>
-      <ion-img *ngIf="chung.hinhanh.it.length" [src]="chung.hinhanh.it"></ion-img>
-    </div>
-    <div *ngIf="luonganh == 'nhieu'">
+    <div *ngIf="(luonganh == 'it' && !chung.hinhanh.it.length) || luonganh == 'nhieu'" id="click-trigger">
       <ion-icon name="images-outline"></ion-icon>
+    </div>
+    <ion-popover trigger="click-trigger" [dismissOnSelect]="true" triggerAction="click">
+      <ng-template>
+        <ion-item button>
+          Chọn ảnh từ Thư viện
+        </ion-item>
+        <ion-item button (click)="addNewToGallery()">
+          Chụp ảnh
+        </ion-item>
+      </ng-template>
+    </ion-popover>
+    <div *ngIf="(luonganh == 'it' && chung.hinhanh.it.length)">
+      <ion-img [src]="chung.hinhanh.it"></ion-img>
     </div>
   </div>
   <div *ngIf="luonganh == 'nhieu'">
