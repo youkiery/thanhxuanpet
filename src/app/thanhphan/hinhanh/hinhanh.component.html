@@ -6,10 +6,10 @@
     </div>
     <ion-popover trigger="click-trigger" [dismissOnSelect]="true" triggerAction="click">
       <ng-template>
-        <ion-item button>
+        <ion-item button (click)="chonanh()">
           Chọn ảnh từ Thư viện
         </ion-item>
-        <ion-item button (click)="addNewToGallery()">
+        <ion-item button (click)="chupanh()">
           Chụp ảnh
         </ion-item>
       </ng-template>
@@ -24,6 +24,6 @@
     </div>
   </div>
   <div class="hinhanh">
-    <ion-img src="https://tpc.googlesyndication.com/pagead/imgad?id=CICAgOCuxcT6FBCsAhg8MgjjGcx9riZG_w"></ion-img>
+    <ion-img [src]="base64"></ion-img>
   </div>
 </div>
