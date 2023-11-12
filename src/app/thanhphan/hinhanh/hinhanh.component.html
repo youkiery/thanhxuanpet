@@ -1,29 +1,26 @@
 <div *ngIf="luonganh == 'it' || luonganh == 'nhieu'"> <!--nếu không nhập lượng ảnh thì bỏ qua -->
   <div class="hinhanh"> <!-- nút upload ảnh -->
     <!-- mode 1 ảnh: ẩn icon thay bằng hình ảnh khi đã chọn ảnh -->
-    <div *ngIf="(luonganh == 'it' && !chung.hinhanh.it.length) || luonganh == 'nhieu'" id="click-trigger">
+    <div *ngIf="(luonganh == 'it' && !hinhanh.it.length) || luonganh == 'nhieu'" id="click-trigger">
       <ion-icon name="images-outline"></ion-icon>
     </div>
     <ion-popover trigger="click-trigger" [dismissOnSelect]="true" triggerAction="click">
       <ng-template>
-        <ion-item button>
+        <ion-item button (click)="chonanh()">
           Chọn ảnh từ Thư viện
         </ion-item>
-        <ion-item button (click)="addNewToGallery()">
+        <ion-item button (click)="chupanh()">
           Chụp ảnh
         </ion-item>
       </ng-template>
     </ion-popover>
-    <div *ngIf="(luonganh == 'it' && chung.hinhanh.it.length)">
-      <ion-img [src]="chung.hinhanh.it"></ion-img>
+    <div *ngIf="(luonganh == 'it' && hinhanh.it.length)">
+      <img [src]="hinhanh.it" />
     </div>
   </div>
   <div *ngIf="luonganh == 'nhieu'">
-    <div class="hinhanh">
-      <ion-img *ngFor="let hinhanh of chung.hinhanh.nhieu" [src]="hinhanh"></ion-img>
+    <div class="hinhanh" *ngFor="let hinhanh of hinhanh.nhieu">
+      <img [src]="hinhanh" />
     </div>
-  </div>
-  <div class="hinhanh">
-    <ion-img src="https://tpc.googlesyndication.com/pagead/imgad?id=CICAgOCuxcT6FBCsAhg8MgjjGcx9riZG_w"></ion-img>
   </div>
 </div>
