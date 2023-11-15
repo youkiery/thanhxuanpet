@@ -1,26 +1,26 @@
-<div *ngIf="luonganh == 'it' || luonganh == 'nhieu'"> <!--nếu không nhập lượng ảnh thì bỏ qua -->
-  <div class="hinhanh"> <!-- nút upload ảnh -->
-    <!-- mode 1 ảnh: ẩn icon thay bằng hình ảnh khi đã chọn ảnh -->
-    <div *ngIf="(luonganh == 'it' && !hinhanh.it.length) || luonganh == 'nhieu'" id="click-trigger">
-      <ion-icon name="images-outline"></ion-icon>
-    </div>
-    <ion-popover trigger="click-trigger" [dismissOnSelect]="true" triggerAction="click">
-      <ng-template>
-        <ion-item button (click)="chonanh()">
-          Chọn ảnh từ Thư viện
-        </ion-item>
-        <ion-item button (click)="chupanh()">
-          Chụp ảnh
-        </ion-item>
-      </ng-template>
-    </ion-popover>
-    <div *ngIf="(luonganh == 'it' && hinhanh.it.length)">
-      <img [src]="hinhanh.it" />
-    </div>
+<ion-popover trigger="click-trigger" [dismissOnSelect]="true" triggerAction="click">
+  <ng-template>
+    <ion-item button (click)="chonanh()">
+      Chọn ảnh từ Thư viện
+    </ion-item>
+    <ion-item button (click)="chupanh()">
+      Chụp ảnh
+    </ion-item>
+  </ng-template>
+</ion-popover>
+
+<div *ngIf="!luonganh" class="hinhanh">
+  <img *ngIf="hinhanh.length" [src]="hinhanh[0]" />
+  <div *ngIf="!hinhanh.length" id="click-trigger">
+    <ion-icon name="images-outline"></ion-icon>
   </div>
-  <div *ngIf="luonganh == 'nhieu'">
-    <div class="hinhanh" *ngFor="let hinhanh of hinhanh.nhieu">
-      <img [src]="hinhanh" />
-    </div>
+</div>
+
+<div *ngIf="luonganh">
+  <div class="hinhanh" *ngFor="let anh of hinhanh">
+    <img [src]="anh" />
+  </div>
+  <div class="hinhanh" id="click-trigger">
+    <ion-icon name="images-outline"></ion-icon>
   </div>
 </div>

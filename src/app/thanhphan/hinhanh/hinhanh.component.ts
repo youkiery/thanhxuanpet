@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, ViewEncapsulation, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Camera, CameraResultType, GalleryPhotos } from '@capacitor/camera';
 
 @Component({
@@ -7,16 +7,17 @@ import { Camera, CameraResultType, GalleryPhotos } from '@capacitor/camera';
   styleUrls: ['./hinhanh.component.scss'],
 })
 export class HinhanhComponent implements OnInit {
-  @Input() luonganh: string // it, nhieu
-  public hinhanh = {
-    it: "",
-    nhieu: []
-  }
+  @Input() luonganh: number = 0 // 0: 1 anh, 1: nhieu anh
+  @Output() thaydoi = new EventEmitter<any>();
+  public hinhanh = []
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.hinhanh);
+    console.log(this.luonganh);
+  }
 
-  ionViewOnEnter() { }
+  ionViewOnEnter() {  }
 
   public async chupanh() {
     const anhchup = await Camera.getPhoto({
@@ -25,8 +26,9 @@ export class HinhanhComponent implements OnInit {
       resultType: CameraResultType.Base64
     });
     var dulieuanh = "data:image/jpeg;base64," + anhchup.base64String;
-    if (this.luonganh == 'it') this.hinhanh.it = dulieuanh
-    else this.hinhanh.nhieu.push(dulieuanh)
+    if (!this.luonganh) this.hinhanh = [dulieuanh]
+    else this.hinhanh.push(dulieuanh)
+    this.thaydoi.emit(this.hinhanh)
   }
 
   public chonanh() {
@@ -34,8 +36,9 @@ export class HinhanhComponent implements OnInit {
       quality: 90,
     }).then(file_uri => {
       this.readAsBase64(file_uri).then((base64: string) => {
-        if (this.luonganh == 'it') this.hinhanh.it = base64
-        else this.hinhanh.nhieu.push(base64)
+        if (!this.luonganh) this.hinhanh = [base64]
+        else this.hinhanh.push(base64)
+        this.thaydoi.emit(this.hinhanh)
       })
     }, err => console.log(err));
   }

@@ -1,3 +1,8 @@
 <ion-content>
-  <app-hinhanh [luonganh]="'nhieu'" [(ngModel)]="rating"></app-hinhanh>
+  <app-hinhanh [luonganh]="1" (thaydoi)="hinhanh.thaydoi($event)"></app-hinhanh>
+  <ion-button (click)="uploadanh()">
+    upload ảnh
+  </ion-button>
+
+  <img src="assets/image/1.jpg" class="thumb-img" (click)="xemanh('assets/image/1.jpg')"/>
 </ion-content>
