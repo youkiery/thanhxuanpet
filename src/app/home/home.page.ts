@@ -11,20 +11,15 @@ import { HinhanhService } from '../dichvu/hinhanh.service';
 export class HomePage {
   @ViewChild('pwaphoto') pwaphoto: ElementRef;
   images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
-
+  password = ""
+  ngayden: string
+  ngaydi: string
   constructor(
     public hinhanh: HinhanhService,
     // public firestore: Storage,
     // public http: HttpClient,
     // public storage: Storage,
   ) {}
-
-  public uploadanh() {
-    this.hinhanh.taitoanboanhlen().then((hinhanh => {
-      console.log(hinhanh);
-      
-    }))
-  }
 
   // public async checkpost(type: string, action: string, param: Object): Promise<any> {
   //   return new Promise((resolve, reject) => {

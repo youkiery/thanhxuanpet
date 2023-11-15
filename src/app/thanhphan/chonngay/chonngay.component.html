@@ -1,0 +1,8 @@
+<ion-item>
+  <ion-input value="{{ dulieu[tenbien] | date: 'dd.MM.yyyy' }}" [id]="tenbien" label="Pick date"></ion-input>
+  <ion-popover [trigger]="tenbien" size="cover">
+    <ng-template>
+      <ion-datetime presentation="date" [(ngModel)]="dulieu[tenbien]" locale="vi-VI" (ionChange)="chonngay()"></ion-datetime>
+    </ng-template>
+  </ion-popover>
+</ion-item>

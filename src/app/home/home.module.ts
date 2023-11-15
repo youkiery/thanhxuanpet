@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { HinhanhComponent } from '../thanhphan/hinhanh/hinhanh.component';
+import { ChonngayComponent } from '../thanhphan/chonngay/chonngay.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { HinhanhComponent } from '../thanhphan/hinhanh/hinhanh.component';
   ],
   declarations: [
     HomePage,
-    HinhanhComponent
+    HinhanhComponent,
+    ChonngayComponent
   ]
 })
 export class HomePageModule {}

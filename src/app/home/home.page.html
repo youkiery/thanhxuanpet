@@ -1,8 +1,7 @@
 <ion-content>
-  <app-hinhanh [luonganh]="1" (thaydoi)="hinhanh.thaydoi($event)"></app-hinhanh>
-  <ion-button (click)="uploadanh()">
-    upload ảnh
-  </ion-button>
+  <app-chonngay tenbien="ngayden" (thaydoi)="ngayden = $event"></app-chonngay>
+  <app-chonngay tenbien="ngaydi" (thaydoi)="ngaydi = $event"></app-chonngay>
 
-  <img src="assets/image/1.jpg" class="thumb-img" (click)="xemanh('assets/image/1.jpg')"/>
+  {{ngayden}}
+  {{ngaydi}}
 </ion-content>
