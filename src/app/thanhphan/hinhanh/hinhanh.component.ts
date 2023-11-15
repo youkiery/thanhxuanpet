@@ -12,10 +12,7 @@ export class HinhanhComponent implements OnInit {
   public hinhanh = []
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.hinhanh);
-    console.log(this.luonganh);
-  }
+  ngOnInit() {}
 
   ionViewOnEnter() {  }
 

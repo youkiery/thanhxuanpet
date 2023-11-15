@@ -1,0 +1,31 @@
+.nutdong, .nutzoomlen, .nutzoomxuong {
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+}
+
+.menu {
+  text-align: center;
+}
+
+.nut {
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.nutdong {
+  background: red;
+}
+
+.nutzoomlen {
+  background: green;
+}
+
+.nutzoomxuong {
+  background: gold;
+}

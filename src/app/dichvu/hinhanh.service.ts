@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage, ref, uploadString, getDownloadURL } from '@angular/fire/storage';
+import { XemanhComponent } from '../thanhphan/xemanh/xemanh.component';
+import { ModalController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,18 @@ export class HinhanhService {
   constructor(
     public firestore: Storage,
     public storage: Storage,
+    public modalCtrl: ModalController
   ) { }
+
+  public async xem(diachianh: string) {
+    const modal = await this.modalCtrl.create({
+      component: XemanhComponent,
+      componentProps: {
+        hinhanh: diachianh
+      }
+    });
+    modal.present();
+  }
 
   public thaydoi(event) {
     this.dulieu = event
