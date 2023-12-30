@@ -1,26 +1,27 @@
-<ion-popover trigger="click-trigger" [dismissOnSelect]="true" triggerAction="click">
-  <ng-template>
-    <ion-item button (click)="chonanh()">
+<div class="khung" *ngIf="mokhung" (click)="mokhung = false"></div>
+<div class="khunganh">
+  <div class="morong" *ngIf="mokhung">
+    <div class="chucnang" (click)="chonanh()">
       Chọn ảnh từ Thư viện
-    </ion-item>
-    <ion-item button (click)="chupanh()">
+    </div>
+    <div class="chucnang" (click)="chupanh()">
       Chụp ảnh
-    </ion-item>
-  </ng-template>
-</ion-popover>
-
-<div *ngIf="!luonganh" class="hinhanh">
-  <img *ngIf="hinhanh.length" [src]="hinhanh[0]" />
-  <div *ngIf="!hinhanh.length" id="click-trigger">
-    <ion-icon name="images-outline"></ion-icon>
+    </div>
   </div>
-</div>
 
-<div *ngIf="luonganh">
-  <div class="hinhanh" *ngFor="let anh of hinhanh">
-    <img [src]="anh" />
+  <div *ngIf="luonganh == '0'" class="hinhanh">
+    <img *ngIf="hinhanh.length" [src]="hinhanh[0]" (click)="mokhung = true" />
+    <div *ngIf="!hinhanh.length" (click)="mokhung = true">
+      +
+    </div>
   </div>
-  <div class="hinhanh" id="click-trigger">
-    <ion-icon name="images-outline"></ion-icon>
+
+  <div *ngIf="luonganh == '1'">
+    <div class="hinhanh" *ngFor="let anh of hinhanh; let i = index" (click)="xoaanh(i)">
+      <img [src]="anh" />
+    </div>
+    <div class="hinhanh" (click)="mokhung = true">
+      +
+    </div>
   </div>
 </div>
